@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var romanToInt = function(s) {
+            const objList = {
+                'I': {num: 1, index: 1},
+                'V': {num: 5, index: 2},
+                'X': {num: 10, index: 3},
+                'L': {num: 50, index: 4},
+                'C': {num: 100, index: 5},
+                'D': {num: 500, index: 6},
+                'M': {num: 1000, index: 7}
+            }
+            let result = 0
+            for (let i = 0; i < s.length - 1; i++) {
+                const difference = objList[s[i]].index - objList[s[i + 1]].index
+                if (difference === -1 || difference === -2) {
+                    result = result - objList[s[i]].num
+                } else {
+                    result = result + objList[s[i]].num
+                }
+            }
+            result = result + objList[s[s.length - 1]].num
+            return result
+        }
+        console.log(romanToInt('MCMXCIV'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var isPalindrome = function(x) {
+            // bad solution
+
+            // const absolute = Math.abs(x)
+            // if (x === absolute) {
+            //     const string = x.toString()
+            //     const arr = Array.from(string)
+            //     const reverseArr = arr.slice().reverse()
+            //     // 將兩陣列轉換為string再進行比較（因為a,b的儲存位置不同）
+            //     console.log(arr + ' ' + reverseArr)
+            //     if (JSON.stringify(arr) == JSON.stringify(reverseArr)) {
+            //         return true
+            //     } else {
+            //         return false
+            //     }
+            // }
+            // if (x !== absolute) {
+            //     return false
+            // }
+
+            // better solution
+
+            if (x < 0) {
+                return false
+            }
+            const stringX = x.toString()
+            let start = 0
+            let end = stringX.length - 1
+            while (start < end) {
+                if (stringX[start] !== stringX[end]) {
+                    return false
+                }
+                start ++
+                end --
+            }
+            return true
+        };
+        console.log(isPalindrome(121))
+    </script>
+</body>
+</html>

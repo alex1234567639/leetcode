@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var longestCommonPrefix = function(strs) {
+            if (strs.length === 0 || strs[0] === '') {
+                return ''
+            } else {
+                for (let i = 1; i < strs[0].length + 1; i++) {
+                    for (let j = 0; j < strs.length - 1; j++) {
+                        if (strs[j].slice(0,i) !== strs[j + 1].slice(0,i)) {
+                            return strs[j].slice(0,i - 1)
+                        }
+                    }
+                    if (i === strs[0].length) {
+                        return strs[0]
+                    }
+                }
+            }
+        }
+        console.log(longestCommonPrefix(["flower","flower","flower"]))
+        console.log(longestCommonPrefix(["flower","flow","flight"]))
+        console.log(longestCommonPrefix(["dog","racecar","car"]))
+        console.log(longestCommonPrefix(["ab", "a"]))
+        console.log(longestCommonPrefix(["a"]))
+        console.log(longestCommonPrefix([""]))
+        console.log(longestCommonPrefix([]))
+    </script>
+</body>
+</html>
