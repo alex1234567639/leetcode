@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 給予一個陣列及數字targetSum，返回陣列中的兩個數字總和為targetSum
+        // 若無符合則返回空陣列
+        function twoNumberSum(array, targetSum) {
+            const checkingObj = {}
+            for (let i = 0; i < array.length; i++) {
+                if (checkingObj[array[i]]) {
+                    return [checkingObj[array[i]], array[i]]
+                } else {
+                    checkingObj[targetSum - array[i]] = array[i]
+                    if (i === array.length - 1) { return [] }
+                }
+            }
+        } 
+        console.log(twoNumberSum([2,7,11,15], 9))
+        console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 18))
+    </script>
+</body>
+</html>
