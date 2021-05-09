@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 給予兩個陣列，判別第二個陣列是否為第一個的subsequence
+        // subsequence:母陣列包含所有subsequence的值，且順序一致
+        function isValidSubsequence(array, sequence) {
+            if (array.length < sequence.length) { return false }
+            const obj = { 0: 0}
+            for (let i = 0; i < sequence.length + 1; i++) {
+                if (obj[i] === array.length) { return false }
+                for (let j = obj[i]; j < array.length; j++) {
+                    console.log(i+','+j)
+                    if (sequence[i] === array[j]) { obj[i + 1] = j + 1; console.log(obj); break; }
+                    if (j === array.length - 1) { return false }
+                }
+                if (i === sequence.length - 1) { return true }
+            }
+        }
+
+        console.log(isValidSubsequence([5, 1, 22, 25, 6, -1, 8, 10], [1, 6, -1, 10]))
+        console.log(isValidSubsequence([5, 1, 22, 25, 6, -1, 8, 10], [7, 1, 6, -1, 10]))
+        console.log(isValidSubsequence([5, 1, 22], [1, 6, -1, 10, 10]))
+    </script>
+</body>
+</html>
