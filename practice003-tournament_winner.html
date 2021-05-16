@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function tournamentWinner(competitions, results) {
+            const winner = []
+            for (let i = 0; i < competitions.length; i++) {
+                winner.push(competitions[i][Math.abs(results[i] - 1)])
+            }
+            const total = {}
+            winner.forEach(e => !total[e] ? total[e] = 1 : total[e]++)
+            const max = Object.keys(total).sort((a, b) => total[b] - total[a])[0];
+            return max
+        }
+
+        console.log(tournamentWinner([
+            ['HTML', 'C#'],
+            ['C#', 'Python'],
+            ['Python', 'HTML']
+        ], [0, 0, 1]))
+    </script>
+</body>
+</html>
