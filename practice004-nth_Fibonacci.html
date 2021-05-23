@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 在費波納西數列中找出第n項的數值
+        function getNthFib(n) {
+            if (n === 1) { return 0 }
+            if (n === 2) { return 1 }
+
+            return getNthFib(n-1) + getNthFib(n-2)
+        }
+
+        console.log(getNthFib(5))
+    </script>
+</body>
+</html>
