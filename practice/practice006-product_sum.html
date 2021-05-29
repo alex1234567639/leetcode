@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function productSum(array) {
+            // 寫一個helper function，計算正在執行的層數
+            function helperFunc(arr, level) {
+                let total = 0
+                for (let i = 0; i < arr.length ; i++) {
+                    if (!Array.isArray(arr[i])) {
+                        total += arr[i] * level
+                    } else {
+                        total += helperFunc(arr[i], level + 1) * level
+                    }
+                }
+                return total
+            }
+
+            return helperFunc(array, 1)
+        } 
+
+        console.log(productSum([1, 2, 3, 4]))
+        console.log(productSum([1, [2, 3], 4]))
+        console.log(productSum([5, 2, [7, -1], 3, [6, [-13, 8], 4]]))
+    </script>
+</body>
+</html>

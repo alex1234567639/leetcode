@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function bubbleSort(arr) {
+            for (let i = 0; i < arr.length - 1; i++) {
+                noSwap = true
+                // 每多跑一次i，檢查的次數可以-1
+                for (let j = 0; j < arr.length - 1 - i; j++) { 
+                    // 如果前項大於後項就swap
+                    if (arr[j] > arr[j+1]) {
+                        let temp = arr[j]
+                        arr[j] = arr[j+1]
+                        arr[j+1] = temp
+
+                        noSwap = false
+                    }
+                }
+                if (noSwap) break
+            }
+            return arr
+        }
+
+        console.log(bubbleSort([8, 5, 2, 9, 5, 6, 3]))
+        console.log(bubbleSort([34, 57, 51, 3, 78, 95, 32, 57, 14]))
+    </script>
+</body>
+</html>
