@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // let result = []
+        // 給一個array(例:[1,2,3])，印出所有該array index的排列組合方式([1,2,3], [2,1,3], [2,3,1], ... )
+        function getPermutations(array) {
+
+            let result = []
+            
+            function helperFunc(arr, index) {
+                // 判斷還有沒有能交換的index
+                if (index === arr.length - 1) {
+                    return
+                }
+
+                // 該index的數與後面所有數字交換
+                for (let i = 0; i < arr.length-index; i++) {
+
+                    let temp = arr[index]
+                    arr[index] = arr[i + index]
+                    arr[i + index] = temp
+
+                    const singleResult = arr.slice(0)
+
+                    // 若為最後一次交換，push到result
+                    if (index === arr.length - 2) {
+                        result.push(singleResult)
+                    }
+                    // 若不為最後一次交換，則繼續交換下一個index的數
+                    else {
+                        result.concat(helperFunc(singleResult, index + 1))
+                    }
+                }
+                return result
+            }
+
+            return helperFunc(array, 0)
+        }
+
+        console.log(getPermutations([1,2,3]))
+        console.log(getPermutations([1,2,3,4], 0))
+    </script>
+</body>
+</html>
