@@ -16,7 +16,7 @@
             function helperFunc(arr, index) {
                 // 判斷還有沒有能交換的index
                 if (index === arr.length - 1) {
-                    return
+                    return [arr]
                 }
 
                 // 該index的數與後面所有數字交換
@@ -43,8 +43,9 @@
             return helperFunc(array, 0)
         }
 
-        console.log(getPermutations([1,2,3]))
-        console.log(getPermutations([1,2,3,4], 0))
+        console.log(getPermutations([1]))
+        // console.log(getPermutations([1,2,3]))
+        // console.log(getPermutations([1,2,3,4], 0))
     </script>
 </body>
 </html>
