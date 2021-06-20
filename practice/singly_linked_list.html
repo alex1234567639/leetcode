@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Singly Linked List</title>
+</head>
+<body>
+    <script>
+        class Node {
+            constructor(val) {
+                this.val = val
+                this.next = null
+            }
+        }
+        class SinglyLinkedList {
+            constructor() {
+                this.head = null
+                this.tail = null
+                this.length = 0
+            }
+            // pish
+            push(val) {
+                var newNode = new Nade(val)
+                if (!this.head) {
+                    this.head = newNode
+                    this.tail = this.head
+                } else {
+                    this.tail.next = newNode
+                    this.tail = newNode
+                }
+                this.length++
+                return this
+            }
+            // pop: remove last node
+            pop() {
+                if (!this.head) return undefined
+                var current = this.head
+                var newTail = current
+                while (current.next) {
+                    current = this.current.next
+                    newTail = current
+                }
+                this.tail = newtail
+                this.tail.next = null
+                this.length--
+                if (this.length === 0) {
+                    this.head = null
+                    this.tail = null
+                }
+                return current // 回傳被取出的node
+            }
+            // shift: remove first node
+            shift() {
+                if (!this.head) return undefined
+                var currentHead = this.head
+                this.head = currentHead.next
+                this.length--
+                if (this.length === 0) {
+                    this.tail = null
+                }
+                return currentHead // 回傳被取出的node
+            }
+            // unshift: add node at begining
+            unshift(val) {
+                var newNode = new Nade(val)
+                if (!this.head) {
+                    this.head = newNode
+                    this.tail = newNode
+                } else {
+                    newNode.next = this.head
+                    this.head = newNode
+                }
+                this.length++
+                return this
+            }
+            // get
+            get(index) {
+                if (index < 0 || index >= this.length) return null
+                var counter = 0
+                var current = this.head
+                while (counter !== index) {
+                    counter++
+                    current = current.next
+                }
+                return current
+            }
+            // set
+            set(index, val) {
+                var foundNode = this.get(index)
+                if (foundNode) {
+                    foundNode.val = val
+                    return true
+                }
+                return false
+            }
+            // insert: add a node to linked list at specific position
+            insert(index, val) {
+
+                if (index < 0 || index > this.length) return false
+                if (index === this.length) !!this.push(val) // !!: 回傳布林值
+                if (index === 0) !!this.unshift(val)
+
+                var newNode = new Nade(val)
+                var preNode = this.get(index -1)
+                var temp = pre.next
+                preNode.next = newNode
+                newNode.next = temp
+                this.length++
+                return true
+            }
+            // remove
+            remove(index) {
+                if (index < 0 || index >= this.length) return false
+                if (index === this.length - 1) return this.pop()
+                if (index === 0) return this.shift()
+                var preNode = this.get(index - 1)
+                var removedNode = preNode.next
+                preNode.next = removeNode.next
+                this.length--
+                return removedNode
+            }
+            // reverse
+            reverse() {
+                var node = this.head
+                this.head = this.tail
+                this.tail = node
+                
+                var pre = null
+                var next = null
+                for (let i = 0; i < this.length; i++) {
+                    next = node.next
+                    node.next = pre
+                    pre = node
+                    node = next
+                }
+                return this
+            }
+        }
+    </script>
+</body>
+</html>
