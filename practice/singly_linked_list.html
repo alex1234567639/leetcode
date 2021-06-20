@@ -19,9 +19,9 @@
                 this.tail = null
                 this.length = 0
             }
-            // pish
+            // push
             push(val) {
-                var newNode = new Nade(val)
+                var newNode = new Node(val)
                 if (!this.head) {
                     this.head = newNode
                     this.tail = this.head
@@ -34,14 +34,15 @@
             }
             // pop: remove last node
             pop() {
+                console.log(this.head)
                 if (!this.head) return undefined
                 var current = this.head
                 var newTail = current
                 while (current.next) {
-                    current = this.current.next
                     newTail = current
+                    current = current.next
                 }
-                this.tail = newtail
+                this.tail = newTail
                 this.tail.next = null
                 this.length--
                 if (this.length === 0) {
@@ -116,7 +117,7 @@
                 if (index === 0) return this.shift()
                 var preNode = this.get(index - 1)
                 var removedNode = preNode.next
-                preNode.next = removeNode.next
+                preNode.next = removedNode.next
                 this.length--
                 return removedNode
             }
@@ -136,7 +137,59 @@
                 }
                 return this
             }
+
+            print() {
+                var arr = []
+                var current = this.head
+                while (current) {
+                    arr.push(current.val)
+                    current = current.next
+                }
+                console.log(arr)
+            }
+
+            // 習題: remove duplicate
+            removeDuplicate() {
+                if (!this.head) return undefined
+
+                var current = this.head
+                var valList = {}
+                var removeIndex = [] // 待刪除的項目
+
+                // 判斷value是否存在，若否則記錄到待刪除的array(removeIndex)中
+                for (let i = 0; i < this.length; i++) {
+                    if (valList[current.val]) {
+                        removeIndex.push(i)
+                        current = current.next
+                    } else {
+                        valList[current.val] = i.toString()
+                        current = current.next
+                    }
+                }
+
+                console.log('valList:')
+                console.log(valList)
+                console.log('removeIndex:')
+                console.log(removeIndex)
+                
+                for (let j = 0; j < removeIndex.length; j++) {
+                    this.remove(removeIndex[j] - j)
+                    console.log(this.print())
+                }
+                return this
+            }
         }
+
+        var list = new SinglyLinkedList()
+        list.push(100)
+        list.push(100)
+        list.push(100)
+        list.push(300)
+        list.push(300)
+        list.push(300)
+        list.push(500)
+        list.push(500)
+        list.push(500)
     </script>
 </body>
 </html>
